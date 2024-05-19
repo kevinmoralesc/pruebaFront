@@ -3,18 +3,29 @@ name: Prueba de Humo
 on:
   push:
     branches:
-      - main  # o la rama que prefieras
+      - main
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Puedes cambiar a otra imagen de sistema operativo si es necesario
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout del código
       uses: actions/checkout@v2
 
+    - name: Instalar Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
     - name: Instalar dependencias
       run: npm install
+
+    - name: Instalar Chrome
+      run: sudo apt-get install -y google-chrome-stable
+
+    - name: Compilar TypeScript a JavaScript
+      run: npx tsc smoke_test.ts
 
     - name: Ejecutar prueba de humo
       run: node smoke_test.js
