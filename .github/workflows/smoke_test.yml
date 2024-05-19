@@ -18,6 +18,11 @@ jobs:
         with:
           node-version: '16'
 
+      - name: Instalar Google Chrome
+        uses: logikal-io/install-chrome@v1.0.1
+        with:
+          version: stable
+
       - name: Instalar dependencias
         run: npm install
 
