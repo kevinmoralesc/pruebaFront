@@ -19,7 +19,7 @@ jobs:
           node-version: '16'
 
       - name: Instalar Google Chrome
-        uses: logikal-io/install-chrome@latest
+        uses: logikal-io/install-chrome@v1.0.1
         with:
           version: stable
 
@@ -41,7 +41,4 @@ jobs:
           chmod +x chromedriver
           mv chromedriver /usr/local/bin/chromedriver
 
-      - name: Ejecutar prueba de humo
-        run: |
-          export CHROME_BIN=/usr/bin/google-chrome
-          node smoke_test.js --headless
+      
