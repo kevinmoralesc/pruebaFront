@@ -21,14 +21,12 @@ jobs:
       - name: Instalar dependencias
         run: npm install
 
-      - name: Descargar ChromeDriver
+      - name: Descargar y configurar ChromeDriver
         run: |
-          wget https://chromedriver.chromium.org/LATEST_RELEASE/chromedriver_linux64.zip
+          wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
-
-      - name: Establecer ruta de ChromeDriver
-        run: |
-          echo "##vso=$(pwd)/chromedriver" >> $GITHUB_ENV
+          chmod +x chromedriver
+          mv chromedriver /usr/local/bin/chromedriver
 
       - name: Ejecutar prueba de humo
         run: |
