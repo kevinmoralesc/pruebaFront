@@ -10,26 +10,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout del código
-      uses: actions/checkout@v2
+      - name: Checkout del código
+        uses: actions/checkout@v2
 
-    - name: Instalar Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
+      - name: Instalar Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
 
-    - name: Instalar dependencias
-      run: npm install
+      - name: Instalar dependencias
+        run: npm install
 
-    - name: Instalar Chrome
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
+      - name: Instalar Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
 
-    - name: Instalar ChromeDriver
-      run: npm install chromedriver
+      - name: Descargar ChromeDriver
+        run: |
+          wget https://chromedriver.chromium.org/downloads/chromedriver_linux_64.zip
+          unzip chromedriver_linux_64.zip
 
-    - name: Ejecutar prueba de humo
-      run: |
-        export CHROME_BIN=/usr/bin/google-chrome
-        node smoke_test.js
+      - name: Establecer ruta de ChromeDriver
+        run: |
+          echo "##vso=$(pwd)/chromedriver" >> $GITHUB_ENV
+
+      - name: Ejecutar prueba de humo
+        run: |
+          export CHROME_BIN=/usr/bin/google-chrome --headless
+          node smoke_test.js
