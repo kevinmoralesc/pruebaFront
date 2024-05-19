@@ -18,27 +18,19 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Instalar Google Chrome
-        uses: logikal-io/install-chrome@v1.0.1
-        with:
-          version: stable
+      - name: Descargar Google Chrome
+        run: |
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
-      - name: Instalar dependencias
-        run: npm install
+      - name: Instalar Google Chrome
+        run: |
+          sudo dpkg -i google-chrome-stable_current_amd64.deb || true
+          sudo apt-get install -f -y
 
       - name: Verificar instalación de Chrome
         run: |
           if command -v google-chrome; then
-            echo "Chrome está instalado en la ubicación predeterminada (/usr/bin/google-chrome)."
+            echo "Chrome está instalado correctamente."
           else
-            echo "Chrome no está instalado en la ubicación predeterminada (/usr/bin/google-chrome)."
+            echo "Hubo un problema al instalar Chrome."
           fi
-
-      - name: Descargar y configurar ChromeDriver
-        run: |
-          wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          chmod +x chromedriver
-          mv chromedriver /usr/local/bin/chromedriver
-
-      
