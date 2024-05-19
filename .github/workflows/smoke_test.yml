@@ -30,5 +30,5 @@ jobs:
 
       - name: Ejecutar prueba de humo
         run: |
-          export CHROME_BIN=/usr/bin/google-chrome --headless
-          node smoke_test.js
+          export CHROME_BIN=/usr/bin/google-chrome
+          node smoke_test.js --headless
