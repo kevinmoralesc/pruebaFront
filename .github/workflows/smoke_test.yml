@@ -21,6 +21,14 @@ jobs:
       - name: Instalar dependencias
         run: npm install
 
+      - name: Verificar instalación de Chrome
+        run: |
+          if command -v google-chrome; then
+            echo "Chrome está instalado en la ubicación predeterminada (/usr/bin/google-chrome)."
+          else
+            echo "Chrome no está instalado en la ubicación predeterminada (/usr/bin/google-chrome)."
+          fi
+
       - name: Descargar y configurar ChromeDriver
         run: |
           wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
