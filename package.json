@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.3",
     "selenium-webdriver": "^4.21.0",
+    "serve": "^14.2.3",
     "sweetalert2": "^11.10.8"
   },
   "devDependencies": {
