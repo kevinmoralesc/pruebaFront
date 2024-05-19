@@ -33,4 +33,8 @@ jobs:
             echo "Chrome está instalado correctamente."
           else
             echo "Hubo un problema al instalar Chrome."
+            exit 1
           fi
+
+      - name: Probar Chrome
+        run: google-chrome --version
