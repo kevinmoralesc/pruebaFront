@@ -27,7 +27,10 @@ async function handleAlert(driver) {
 }
 
 async function runSmokeTest() {
-    let driver = await new Builder().forBrowser('chrome').build();
+    let driver = await new Builder()
+        .forBrowser('chrome')
+        .setChromeOptions(/* Aquí puedes configurar las opciones de Chrome si lo necesitas */)
+        .build();
 
     try {
         await driver.get('https://pruebafront-production-e3aa.up.railway.app/');
