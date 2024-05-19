@@ -40,4 +40,4 @@ jobs:
         run: google-chrome --version
 
       - name: Ejecutar prueba de humo
-        run: node node smoke_test.js
+        run: node smoke_test.js
