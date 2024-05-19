@@ -42,5 +42,7 @@ jobs:
       - name: Probar Chrome
         run: google-chrome --version
 
-      - name: Ejecutar prueba de humo
-        run: node smoke_test.js
+      - name: Instalar dependencias y ejecutar prueba de humo
+        run: |
+         npm install
+         node smoke_test.js
