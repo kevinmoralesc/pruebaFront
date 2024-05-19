@@ -21,15 +21,10 @@ jobs:
       - name: Instalar dependencias
         run: npm install
 
-      - name: Instalar Chrome
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-
       - name: Descargar ChromeDriver
         run: |
-          wget https://chromedriver.chromium.org/downloads/chromedriver_linux_64.zip
-          unzip chromedriver_linux_64.zip
+          wget https://chromedriver.chromium.org/LATEST_RELEASE/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
 
       - name: Establecer ruta de ChromeDriver
         run: |
