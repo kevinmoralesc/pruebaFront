@@ -21,11 +21,14 @@ jobs:
     - name: Instalar dependencias
       run: npm install
 
-    - name: Instalar Chrome
-      run: sudo apt-get install -y google-chrome-stable
+    - name: Instalar TypeScript
+      run: npm install typescript --save-dev
 
     - name: Compilar TypeScript a JavaScript
       run: npx tsc smoke_test.ts
+
+    - name: Instalar Chrome
+      run: sudo apt-get install -y google-chrome-stable
 
     - name: Ejecutar prueba de humo
       run: node smoke_test.js
