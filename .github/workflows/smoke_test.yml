@@ -61,4 +61,5 @@ jobs:
             }
           })();
           EOF
+          cat smoke_test.js  # Añadir esto para verificar el contenido del archivo
           node smoke_test.js
