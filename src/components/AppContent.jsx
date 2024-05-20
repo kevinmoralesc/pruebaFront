@@ -34,14 +34,13 @@ const AppContent = () => {
 
     const onLogin = (username, password) => {
         request(
-            "POST",
-            "/login",
+            "POST"
             {
                 login: username,
                 password: password
             }).then(
             (response) => {
-                setAuthHeader(response.data.tokene);
+                setAuthHeader(response.data.token);
                 setComponentToShow("messages");
             }).catch(
             
