@@ -41,11 +41,18 @@ const AppContent = () => {
                 password: password
             }).then(
             (response) => {
-                setAuthHeader(response.data.token);
+                setAuthHeader(response.data.tokene);
                 setComponentToShow("messages");
             }).catch(
+            
             (error) => {
+                
+                Swal.fire({
+                    icon: "error",
+                    text: error.response.data.message,
+                  });
                 setAuthHeader(null);
+                
             }
         );
     };
@@ -69,6 +76,7 @@ const AppContent = () => {
             }).catch(
             (error) => {
                 Swal.fire({
+                    
                     icon: "error",
                     text: error.response.data.message,
                   });
