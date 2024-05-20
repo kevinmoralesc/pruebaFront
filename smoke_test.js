@@ -28,14 +28,14 @@ async function handleAlert(driver) {
 }
 
 async function runSmokeTest() {
+    let options = new chrome.Options();
+    options.addArguments('--headless');
+    options.addArguments('--no-sandbox');
+    options.addArguments('--disable-dev-shm-usage');
+
     let driver = await new Builder()
         .forBrowser('chrome')
-        .setChromeOptions(
-            new chrome.Options()
-                .headless() // Ejecutar en modo headless
-                .windowSize({ width: 1920, height: 1080 }) // Tamaño de la ventana del navegador
-                .addArguments('--no-sandbox', '--disable-dev-shm-usage') // Argumentos adicionales
-        )
+        .setChromeOptions(options)
         .build();
 
     try {
