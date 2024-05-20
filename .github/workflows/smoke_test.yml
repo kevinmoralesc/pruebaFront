@@ -43,11 +43,12 @@ jobs:
 
       - name: Crear y ejecutar prueba de humo
         run: |
-          echo "const { Builder, By, Key, until } = require('selenium-webdriver');
+          echo "import { Builder, By, Key, until } from 'selenium-webdriver';
+          import chrome from 'selenium-webdriver/chrome';
           (async function example() {
             let driver = await new Builder()
               .forBrowser('chrome')
-              .setChromeOptions(new (require('selenium-webdriver/chrome').Options)()
+              .setChromeOptions(new chrome.Options()
                 .addArguments('--no-sandbox', '--disable-dev-shm-usage', '--headless', '--disable-gpu'))
               .build();
             try {
