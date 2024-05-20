@@ -3,7 +3,11 @@ import chrome from 'selenium-webdriver/chrome.js';
 
 async function login(driver) {
     console.log('Iniciando sesión...');
+    // Esperar a que el botón "Login" esté presente
+    await driver.wait(until.elementLocated(By.xpath("//button[contains(text(), 'Login')]")), 10000);
+    // Hacer clic en el botón "Login"
     await driver.findElement(By.xpath("//button[contains(text(), 'Login')]")).click();
+    // Continuar con el resto de las acciones de inicio de sesión
     await driver.findElement(By.id('loginEmail')).sendKeys('kevina.moralesc@uqvirtual.edu.co');
     await driver.findElement(By.id('loginPassword')).sendKeys('123456789');
     await driver.findElement(By.xpath("//button[contains(text(), 'Ingresar')]")).click();
