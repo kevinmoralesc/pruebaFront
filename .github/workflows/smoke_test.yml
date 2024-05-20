@@ -44,7 +44,7 @@ jobs:
       - name: Crear y ejecutar prueba de humo
         run: |
           echo "import { Builder, By, Key, until } from 'selenium-webdriver';
-          import chrome from 'selenium-webdriver/chrome';
+          import chrome from 'selenium-webdriver/chrome.js';
           (async function example() {
             let driver = await new Builder()
               .forBrowser('chrome')
