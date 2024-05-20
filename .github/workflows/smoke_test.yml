@@ -17,17 +17,28 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'
-
-      - name: Instalar Chrome
-        uses: giraffe-fight/chrome-headless@v1
-        with:
-          chrome-version: '94'
-
+          
+      - name: Instalar Google Chrome
+        run: |
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb || true
+          sudo apt-get install -f -y
+          
       - name: Descargar ChromeDriver
         run: |
           wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
           chmod +x chromedriver
           mv chromedriver /usr/local/bin/chromedriver
+
+      - name: Descargar y configurar ChromeDriver
+        run: |
+              wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
+              unzip chromedriver_linux64.zip
+              chmod +x chromedriver
+              mv chromedriver /usr/local/bin/chromedriver
+
+      - name: Verificar versión de ChromeDriver
+        run: chromedriver --version
 
       # Resto de pasos del flujo de trabajo...
