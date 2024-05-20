@@ -32,7 +32,9 @@ jobs:
           unzip chromedriver_linux64.zip
           chmod +x chromedriver
           sudo mv chromedriver /usr/local/bin/chromedriver
-
+          
+      - name: Instalar dependencias
+        run: npm install selenium-webdriver
       - name: Verificar versión de ChromeDriver
         run: chromedriver --version
       - name: Verificar instalación de Chrome
