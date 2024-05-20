@@ -3,7 +3,7 @@ import { request, setAuthHeader } from '../helpers/axios_helper';
 import AuthContent from './AuthContent';
 import LoginForm from './LoginForm.jsx';
 import MainMenu from './MainMenu';
-import RegisterForm from './RegisterForm.jsx';
+import RegisterForm from './RegisterForm.jsx'; 
 import Swal from 'sweetalert2';
 
 const AppContent = () => {
