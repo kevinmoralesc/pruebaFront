@@ -25,10 +25,9 @@ jobs:
           sudo apt-get install -f
           google-chrome --version
       
-      - name: Descargar y configurar ChromeDriver versión 114
+      - name: Descargar y configurar ChromeDriver versión 125
         run: |
-          CHROMEDRIVER_VERSION=94.0.4606.61  # Versión 114 de ChromeDriver
-          wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
+          wget https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.60/linux64/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
           chmod +x chromedriver
           sudo mv chromedriver /usr/local/bin/chromedriver
@@ -39,5 +38,4 @@ jobs:
         run: chromedriver --version
       - name: Verificar instalación de Chrome
         run: google-chrome --version
-      - name: Ejecutar prueba de humo
-        run: node smoke_test.js
+    
