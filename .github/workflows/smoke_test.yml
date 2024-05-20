@@ -24,19 +24,13 @@ jobs:
           sudo dpkg -i google-chrome-stable_current_amd64.deb || true
           sudo apt-get install -f -y
           
-      - name: Descargar ChromeDriver
-        run: |
-          wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          chmod +x chromedriver
-          mv chromedriver /usr/local/bin/chromedriver
-
       - name: Descargar y configurar ChromeDriver
         run: |
-              wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
-              unzip chromedriver_linux64.zip
-              chmod +x chromedriver
-              mv chromedriver /usr/local/bin/chromedriver
+          CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          wget https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          chmod +x chromedriver
+          sudo mv chromedriver /usr/local/bin/chromedriver
 
       - name: Verificar versión de ChromeDriver
         run: chromedriver --version
