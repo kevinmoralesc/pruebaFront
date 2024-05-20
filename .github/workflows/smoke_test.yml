@@ -40,5 +40,6 @@ jobs:
 
       - name: Verificar versión de ChromeDriver
         run: chromedriver --version
-
+      - name: Verificar instalación de Chrome
+        run: google-chrome --version
       # Resto de pasos del flujo de trabajo...
