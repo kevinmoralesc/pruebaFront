@@ -30,7 +30,12 @@ async function handleAlert(driver) {
 async function runSmokeTest() {
     let driver = await new Builder()
         .forBrowser('chrome')
-        .setChromeOptions(/* Aquí puedes configurar las opciones de Chrome si lo necesitas */)
+        .setChromeOptions(
+            new chrome.Options()
+                .headless() // Ejecutar en modo headless
+                .windowSize({ width: 1920, height: 1080 }) // Tamaño de la ventana del navegador
+                .addArguments('--no-sandbox', '--disable-dev-shm-usage') // Argumentos adicionales
+        )
         .build();
 
     try {
