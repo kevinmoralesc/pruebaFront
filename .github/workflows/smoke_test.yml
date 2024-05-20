@@ -41,22 +41,5 @@ jobs:
       - name: Verificar instalación de Chrome
         run: google-chrome --version
 
-      - name: Crear y ejecutar prueba de humo
-        run: |
-          echo "import { Builder, By, Key, until } from 'selenium-webdriver';
-          import chrome from 'selenium-webdriver/chrome.js';
-          (async function example() {
-            let driver = await new Builder()
-              .forBrowser('chrome')
-              .setChromeOptions(new chrome.Options()
-                .addArguments('--no-sandbox', '--disable-dev-shm-usage', '--headless', '--disable-gpu'))
-              .build();
-            try {
-              await driver.get('http://www.google.com/ncr');
-              await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
-              await driver.wait(until.titleIs('webdriver - Google Search'), 1000);
-            } finally {
-              await driver.quit();
-            }
-          })();" > smoke_test.js
-          node smoke_test.js
+      - name: ejecutar prueba de humo
+        run: node smoke_test.js
