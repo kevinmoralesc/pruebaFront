@@ -18,17 +18,17 @@ jobs:
         with:
           node-version: '16'
           
-      - name: Descargar y configurar Chrome 114
+      - name: Descargar y configurar Chrome
         run: |
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo dpkg -i google-chrome-stable_current_amd64.deb
           sudo apt-get install -f
           google-chrome --version
-          
-      - name: Descargar y configurar ChromeDriver
+      
+      - name: Descargar y configurar ChromeDriver versión 114
         run: |
-          CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
-          wget https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
+          CHROMEDRIVER_VERSION=94.0.4606.61  # Versión 114 de ChromeDriver
+          wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
           chmod +x chromedriver
           sudo mv chromedriver /usr/local/bin/chromedriver
@@ -37,4 +37,5 @@ jobs:
         run: chromedriver --version
       - name: Verificar instalación de Chrome
         run: google-chrome --version
-      # Resto de pasos del flujo de trabajo...
+      - name: Ejecutar prueba de humo
+        run: node smoke_test.js
