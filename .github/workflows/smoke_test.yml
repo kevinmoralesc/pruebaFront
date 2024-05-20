@@ -18,10 +18,12 @@ jobs:
         with:
           node-version: '16'
           
-      - name: Instalar Google Chrome
+      - name: Descargar y configurar Chrome 114
         run: |
-          wget https://dl.google.com/linux/direct/google-chrome-stable_114.0.5735.127_amd64.deb || true
-          sudo apt-get install -f -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb
+          sudo apt-get install -f
+          google-chrome --version
           
       - name: Descargar y configurar ChromeDriver
         run: |
