@@ -45,10 +45,6 @@ const AppContent = () => {
                 setComponentToShow("messages");
             }).catch(
             (error) => {
-                Swal.fire({
-                    icon: "error",
-                    text: error.response.data.message,
-                  });
                 setAuthHeader(null);
             }
         );
