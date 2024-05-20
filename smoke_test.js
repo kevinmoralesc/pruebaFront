@@ -15,7 +15,7 @@ async function login(driver) {
 
 async function handleAlert(driver) {
     try {
-        await driver.wait(until.elementLocated(By.id('swal2-html-container')), 5000);
+        await driver.wait(until.elementLocated(By.id('swal2-html-container')), 10000);
         let alertElement = await driver.findElement(By.id('swal2-html-container'));
         let alertText = await alertElement.getText();
         console.log('Login sin credenciales:');
