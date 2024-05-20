@@ -1,4 +1,5 @@
 import { Builder, By, until } from 'selenium-webdriver';
+import chrome from 'selenium-webdriver/chrome.js';
 
 async function login(driver) {
     console.log('Iniciando sesión...');
