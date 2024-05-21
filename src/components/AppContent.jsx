@@ -34,7 +34,8 @@ const AppContent = () => {
 
     const onLogin = (username, password) => {
         request(
-            "POST"
+            "POST",
+            "/login",
             {
                 login: username,
                 password: password
