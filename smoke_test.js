@@ -25,9 +25,11 @@ async function handleAlertLogin(driver) {
             console.log('La alerta contiene el texto esperado.');
         } else {
             console.error('La alerta no contiene el texto esperado.');
+            process.exit(1); // Marcar como fallida la acción
         }
     } catch (e) {
         console.log('No se encontró ninguna alerta.');
+        process.exit(1); // Marcar como fallida la acción
     }
 }
 
