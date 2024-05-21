@@ -21,7 +21,7 @@ async function handleAlertLogin(driver) {
         console.log('Login sin credenciales:');
         console.log('Texto de la alerta:', alertText);
 
-        if (alertText === 'No se encontro el usuario, revisalo o sino estas registrado, registrate falla') {
+        if (alertText === 'No se encontro el usuario, revisalo o sino estas registrado, registrate') {
             console.log('La alerta contiene el texto esperado.');
         } else {
             console.error('La alerta no contiene el texto esperado.');
