@@ -13,7 +13,7 @@ async function login(driver) {
     await driver.findElement(By.xpath("//button[contains(text(), 'Ingresar')]")).click();
 }
 
-async function handleAlert(driver) {
+async function handleAlertLogin(driver) {
     try {
         await driver.wait(until.elementLocated(By.id('swal2-html-container')), 10000);
         let alertElement = await driver.findElement(By.id('swal2-html-container'));
@@ -46,7 +46,7 @@ async function runSmokeTest() {
         await driver.get('https://pruebafront-production-f62f.up.railway.app/');
         await driver.wait(until.elementLocated(By.css('body')), 10000);
         await login(driver);
-        await handleAlert(driver);
+        await handleAlertLogin(driver);
     } catch (error) {
         console.error('Ocurrió un error durante la ejecución de la prueba:', error);
     } finally {

@@ -31,7 +31,6 @@ const AppContent = () => {
         setComponentToShow("welcome");
         setAuthHeader(null);
     };
-
     const onLogin = (username, password) => {
         request(
             "POST",
@@ -41,18 +40,20 @@ const AppContent = () => {
                 password: password
             }).then(
             (response) => {
+                console.log(response);
                 setAuthHeader(response.data.token);
-                setComponentToShow("messages");
+                Swal.fire({
+                    icon: "success",
+                    title: "El usuario con correo " + response.data.email + " ha iniciado sesion correctamente",
+                    showConfirmButton: true
+                });
             }).catch(
-            
             (error) => {
-                
                 Swal.fire({
                     icon: "error",
                     text: error.response.data.message,
-                  });
+                });
                 setAuthHeader(null);
-                
             }
         );
     };
@@ -71,20 +72,25 @@ const AppContent = () => {
                 rol_id: "1"
             }).then(
             (response) => {
+                console.log(response);
+                Swal.fire({
+                    icon: "success",
+                    title: "El usuario con correo " + response.data.email + " ha sido registrado correctamente",
+                    showConfirmButton: true
+                });
                 setAuthHeader(response.data.token);
-                setComponentToShow("messages");
             }).catch(
             (error) => {
                 Swal.fire({
-                    
                     icon: "error",
                     text: error.response.data.message,
-                  });
-                  
+                });
+
                 setAuthHeader(null);
             }
         );
     };
+
 
     return (
       <>
