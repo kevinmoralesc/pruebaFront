@@ -2,7 +2,7 @@ import { Builder, By, until } from 'selenium-webdriver';
 import chrome from 'selenium-webdriver/chrome.js';
 
 async function login(driver) {
-    console.log('Iniciando sesión...');
+    console.log('Iniciando sesión..');
     // Esperar a que el botón "Login" esté presente
     await driver.wait(until.elementLocated(By.xpath("//button[contains(text(), 'Login')]")), 10000);
     // Hacer clic en el botón "Login"
