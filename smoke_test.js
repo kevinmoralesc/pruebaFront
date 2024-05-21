@@ -43,7 +43,7 @@ async function runSmokeTest() {
         .build();
 
     try {
-        await driver.get('https://pruebafront-production-f62f.up.railway.app/');
+        await driver.get('https://pruebafront-production-6724.up.railway.app/');
         await driver.wait(until.elementLocated(By.css('body')), 10000);
         await login(driver);
         await handleAlertLogin(driver);
