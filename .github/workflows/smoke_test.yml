@@ -44,22 +44,12 @@ jobs:
       - name: Crear y ejecutar prueba de humo
         run: node smoke_test.js
 
-  rollback:
-    runs-on: ubuntu-latest
-    needs: test
-    if: failure()
+      #Da permisos al script pre-push
+      - name: Dar permisos al script pre-push
+        if: ${{ failure() }}
+        run: chmod +x pre-push.sh
 
-    steps:
-      - name: Checkout del código
-        uses: actions/checkout@v2
-
-      - name: Revertir cambios
-        run: |
-          # Obtener el hash del commit anterior al que falló las pruebas
-          PREVIOUS_COMMIT=$(git log --pretty=format:"%H" -n 2 | tail -n 1)
-          
-          # Revertir los cambios hasta el commit anterior
-          git reset --hard $PREVIOUS_COMMIT
-
-          # Forzar el push para revertir los cambios en el repositorio remoto
-          git push --force origin main
+      # ejecuta el script pre-push solo si la prueba de humo falla
+      - name: Ejecutar script pre-push si la prueba de humo falla
+        if: ${{ failure() }}
+        run: ./pre-push.sh
