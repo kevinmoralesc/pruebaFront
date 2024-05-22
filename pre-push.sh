@@ -2,4 +2,4 @@
 
 # Revertir los cambios locales
 echo "Revertir los cambios locales."
-git reset --hard HEAD~1
+git reset --hard HEAD^
