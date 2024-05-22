@@ -6,7 +6,7 @@ git log --oneline
 git status
 
 # Obtener el hash del commit anterior
-PREVIOUS_COMMIT=$(git log --format=%H HEAD^1)
+PREVIOUS_COMMIT=$(git rev-parse HEAD~1)
 
 # Verificar si hay un commit anterior disponible
 if [ -z "$PREVIOUS_COMMIT" ]; then
